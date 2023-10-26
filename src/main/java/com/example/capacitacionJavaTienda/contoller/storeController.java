@@ -15,8 +15,14 @@ public class storeController {
     @Autowired
     private ProductService service;
 
-    @GetMapping("/product")
+    @GetMapping
     public String store(Model model){
+        model.addAttribute("productList", service.findAllProduct());
+        return "store";
+    }
+
+    @GetMapping("/product")
+    public String storeproduct(Model model){
         model.addAttribute("productList", service.findAllProduct());
         return "productList";
     }

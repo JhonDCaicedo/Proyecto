@@ -1,6 +1,7 @@
 package com.example.capacitacionJavaTienda.contoller;
 
 import com.example.capacitacionJavaTienda.domain.User;
+import com.example.capacitacionJavaTienda.service.ProductService;
 import com.example.capacitacionJavaTienda.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,8 @@ public class loginController {
 
     @Autowired
     private UserService service;
+    @Autowired
+    private ProductService productService;
 
     @GetMapping
     public String login(Model model){
