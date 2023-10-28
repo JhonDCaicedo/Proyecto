@@ -1,7 +1,6 @@
 package com.example.capacitacionJavaTienda.contoller;
 
 import com.example.capacitacionJavaTienda.domain.User;
-import com.example.capacitacionJavaTienda.service.ProductService;
 import com.example.capacitacionJavaTienda.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,12 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/login")
-public class loginController {
+public class LoginController {
 
     @Autowired
     private UserService service;
-    @Autowired
-    private ProductService productService;
 
     @GetMapping
     public String login(Model model){
@@ -35,7 +32,7 @@ public class loginController {
         System.out.println("Datos: " + username + " / " + password );
 
         if(service.loadUserByUserName(username,password)){
-            return new ModelAndView("redirect:/login/createAccount");
+            return new ModelAndView("redirect:/store");
         }
 
         return new ModelAndView("redirect:/login");

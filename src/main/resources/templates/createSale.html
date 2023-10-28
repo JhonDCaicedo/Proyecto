@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>store System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+<header></header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-9">
+                <div class="container">
+                    <div class="row text-center">
+                        <h2>Ingrese la información para la venta</h2>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col p-2">
+                                   <label for="name">Nombre</label>
+                                    <input th:field="${product.name}" class="form-control" id="name" readonly>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col p-2">
+                                        <label for="description">Descripcion</label>
+                                        <input th:field="${product.description}" class="form-control" id="description" readonly>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col p-2">
+                                        <label for="price">Precio</label>
+                                        <input th:field="${product.price}" type="text" class="form-control" id="price" readonly>
+                                    </div>
+                                </div>
+                                <hr>
+                                <form method="post" role="form" th:action="@{/store/sale} ">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col p-2">
+                                                <label for="amountSale">Cantidad</label>
+                                                <input required type="number" class="form-control" id="amountSale" name="amountSale" min="1" th:attr="max=${product.amount}">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col p-3">
+                                                <label for="idPayment">Pago</label>
+                                                <select id="idPayment" name="idPayment" class="form-control" required>
+                                                    <option th:each="payment : ${paymentList}" th:value="${payment.id}" th:text="${payment.name}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <input hidden="true" th:field="${product.id}" class="form-control" id="idProduct" name="idProduct">
+                                        <div class="row">
+                                            <div class="col p-3">
+                                                <button type="submit" class="btn btn-success">Pagar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</main>
+<footer></footer>
+</body>
+</html>

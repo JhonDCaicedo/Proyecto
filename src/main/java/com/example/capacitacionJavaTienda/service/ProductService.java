@@ -33,7 +33,7 @@ public class ProductService {
         }
     }
 
-    public Product findByIdUser(Long id){
+    public Product findByIdProduct(Long id){
         Product o = null;
 
         if(repository.findById(id).isPresent()){

@@ -1,29 +1,27 @@
 package com.example.capacitacionJavaTienda.service;
 
-import com.example.capacitacionJavaTienda.domain.Category;
-import com.example.capacitacionJavaTienda.repository.CategoryRepository;
-import lombok.AllArgsConstructor;
+import com.example.capacitacionJavaTienda.domain.Payment;
+import com.example.capacitacionJavaTienda.domain.Product;
+import com.example.capacitacionJavaTienda.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
-public class CategoryService {
-
+public class PaymentService {
     @Autowired
-    private CategoryRepository repository;
+    private PaymentRepository repository;
 
-    public List<Category> findAllCategory (){
+    public List<Payment> findAllPayment (){
         return repository.findAll();
     }
 
-    public Category saveCategory(Category Category){
-        return repository.save(Category);
+    public Payment savePayment(Payment payment){
+        return repository.save(payment);
     }
 
-    public boolean deleteByIdCategory(Long id) {
+    public boolean deleteByIdPayment(Long id) {
         try {
             repository.deleteById(id);
             return true;
@@ -32,8 +30,8 @@ public class CategoryService {
         }
     }
 
-    public Category findByIdCategory(Long id){
-        Category o = null;
+    public Payment findByIdPayment(Long id){
+        Payment o = null;
 
         if(repository.findById(id).isPresent()){
             o = repository.findById(id).get();

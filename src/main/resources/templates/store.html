@@ -11,7 +11,6 @@
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-
                 Store
             </a>
         </div>
@@ -23,11 +22,12 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col" th:each="product : ${productList}">
                 <div class="card h-100">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img th:src="@{/img/iconmonstr-product-3.svg}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title" th:text="${product.name}">...</h5>
                         <p class="card-text" th:text="${product.description}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary" th:text="${product.price}">Go somewhere</a>
+                        <p th:text="${product.price}">...</p>
+                        <a th:href="@{/store/sale/} + ${product.id}" class="btn btn-primary" >Go</a>
                     </div>
                 </div>
             </div>

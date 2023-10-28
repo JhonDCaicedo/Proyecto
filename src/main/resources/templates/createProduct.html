@@ -49,6 +49,14 @@
                                           <input th:field="*{price}" type="text" class="form-control" id="price" placeholder="Ingrese el precio required">
                                       </div>
                                   </div>
+                                  <div class="row">
+                                      <div class="col p-3">
+                                          <label for="idCategory">Categoria</label>
+                                          <select id="idCategory" name="idCategory" class="form-control" required>
+                                              <option th:each="category : ${categoryList}" th:value="${category.id}" th:text="${category.name}"></option>
+                                          </select>
+                                      </div>
+                                  </div>
                                   <hr>
                                   <div class="row">
                                       <div class="col p-3">
